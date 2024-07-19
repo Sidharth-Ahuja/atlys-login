@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { formatClassNames } from "../../utils/helperUtility";
+import { formatClassNames, unlockBody } from "../../utils/helperUtility";
 import LoginModal from "../LoginModal";
 import "./Comments.scss";
 import { comments } from "./constants";
@@ -14,7 +14,7 @@ interface commentType {
     emoticonName: string;
 }
 const Comments = () => {
-    const [openLoginModal, setOpenLoginModal] = useState<boolean>(false); 
+    const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
 
     const handleLoginModal = (val: boolean) => setOpenLoginModal(val);
 
@@ -62,8 +62,8 @@ const Comments = () => {
     return <><div className="commentsWrapper">
         {renderCreateNewPostComment()}
         {comments.map((comment: commentType, index: number) => renderComment(comment, index))}</div>
-        {openLoginModal && <LoginModal closeModal = {() => handleLoginModal(false)}/>}
-        </>
+        {openLoginModal && <LoginModal closeModal={() => { handleLoginModal(false); unlockBody() }} />}
+    </>
 
 }
 export default Comments;
