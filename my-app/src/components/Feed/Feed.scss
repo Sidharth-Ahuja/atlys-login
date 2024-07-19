@@ -1,0 +1,13 @@
+.feedWrapper{
+    width: 100vw;
+    background-color: #000;
+    opacity: 0.9;
+    padding: 70px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    .innerFeeds{
+        width: max-content;
+    }
+}
