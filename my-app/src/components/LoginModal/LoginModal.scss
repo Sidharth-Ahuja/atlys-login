@@ -1,13 +1,61 @@
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
 .outerModal {
     position: fixed;
     height: 100vh;
     width: 100vw;
     top: 0;
     left: 0;
-    backdrop-filter: blur(3px);
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &.fadeIn {
+        .coverBackground {
+            animation: fade-in 0.5s;
+        }
+
+        .innerModal {
+            animation: fade-in 0.5s;
+        }
+    }
+
+    &.fadeOut {
+        .coverBackground {
+            animation: fade-out 0.5s forwards;
+        }
+
+        .innerModal {
+            animation: fade-out 0.5s forwards;
+        }
+    }
+
+    .coverBackground {
+        position: absolute;
+        height: 100vh;
+        width: 100vw;
+        top: 0;
+        left: 0;
+        backdrop-filter: blur(3px);
+    }
 
     .innerModal {
         padding: 40px 24px;
@@ -20,6 +68,8 @@
         color: white;
         min-width: 463px;
         box-sizing: border-box;
+        z-index: 1;
+        position: relative;
 
         .subHeading {
             color: #6B6C70;
@@ -44,6 +94,15 @@
                 display: flex;
                 flex-direction: column;
                 width: 100%;
+                
+                .inputLabel{
+                    display: flex;
+                    justify-content: space-between;
+                    .forgotText{
+                        font-size: 12px;
+                        cursor: pointer;
+                    }
+                }
 
                 label {
                     font-size: 14px;
@@ -52,21 +111,34 @@
                     margin-bottom: 10px;
                 }
 
-                input {
-                    background-color: transparent;
-                    height: 43px;
-                    border: 1.5px solid #35373B;
-                    border-radius: 4px;
-                    padding: 12px;
-                    box-sizing: border-box;
-                    color: white;
-                    &:focus{
-                        outline: none;
+                .inputField{
+                    position: relative;
+                    input {
+                        width: 100%;
+                        background-color: transparent;
+                        height: 43px;
+                        border: 1.5px solid #35373B;
+                        border-radius: 4px;
+                        padding: 12px;
+                        box-sizing: border-box;
+                        color: white;
+    
+                        &:focus {
+                            outline: none;
+                        }
+                    }
+                    .rightIcon{
+                        position: absolute;
+                        right: 16px;
+                        top: 10px;
+                        cursor: pointer;
                     }
                 }
+
             }
         }
-        .button{
+
+        .button {
             color: white;
             background-color: #4A96FF;
             padding: 12px;
@@ -75,16 +147,27 @@
             width: 100%;
             box-sizing: border-box;
             text-align: center;
+            cursor: pointer;
         }
-        .switcherText{
+
+        .switcherText {
             margin-right: auto;
             font-size: 14px;
             color: #7F8084;
-            span{
+            cursor: pointer;
+
+            span {
                 color: white;
                 text-transform: capitalize;
                 cursor: pointer;
             }
+        }
+        
+        .closeBtn{
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            cursor: pointer;
         }
     }
 }

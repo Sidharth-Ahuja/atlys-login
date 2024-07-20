@@ -2,6 +2,7 @@ import { useState } from "react";
 import { formatClassNames, unlockBody } from "../../utils/helperUtility";
 import LoginModal from "../LoginModal";
 import "./Comments.scss";
+import ChatBubble from "./assets/chatBubble.svg";
 import { comments } from "./constants";
 
 interface commentType {
@@ -11,7 +12,7 @@ interface commentType {
     editedOrNot: boolean;
     content: string;
     totalComments: number;
-    emoticonName: string;
+    emoticon: string;
 }
 const Comments = () => {
     const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
@@ -27,7 +28,7 @@ const Comments = () => {
             </div>
             <div className="commentContectSection">
                 <div className="emoticon">
-
+                        💬
                 </div>
                 <div className="content">
                     How are you feeling today?
@@ -41,8 +42,11 @@ const Comments = () => {
         return <div className="commentParent" key={index} onClick={() => handleLoginModal(true)}>
             <div className="profileSection">
                 <div className="leftSection">
+                    <img src={require(`./assets/${comment.profilePic}`)}/>
+                    <div>
                     <div className="ownerName">{comment.name}</div>
                     <p>{`${comment.timeAgo}min${comment.timeAgo > 1 ? "s" : ""} ago`}{comment.editedOrNot ? <div className="edited">Edited</div> : ""}</p>
+                    </div>
                 </div>
                 <div className="dotSection">
                     ...
@@ -50,13 +54,15 @@ const Comments = () => {
             </div>
             <div className="commentContectSection">
                 <div className="emoticon">
-
+                    {comment.emoticon}
                 </div>
                 <div className="content">
                     {comment.content}
                 </div>
             </div>
-            <div className="totalComments">{comment.totalComments} comments</div>
+            <div className="totalComments">
+                <img src={ChatBubble}/>
+                {comment.totalComments} comments</div>
         </div>
     }
     return <><div className="commentsWrapper">

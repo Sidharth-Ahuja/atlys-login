@@ -24,6 +24,13 @@
             color: #C5C7CA;
 
             .leftSection {
+                display: flex;
+                column-gap: 16px;
+                align-items: center;
+                img{
+                    height: 44px;
+                    width: 44px;
+                }
                 .ownerName {
                     font-size: 16px;
                     line-height: 20px;
@@ -60,6 +67,20 @@
             line-height: 24px;
             padding: 16px;
             width: -webkit-fill-available;
+            display: flex;
+            column-gap: 16px;
+            .emoticon{
+                padding: 16px;
+                background: #27292D;
+                border-radius: 50%;
+                font-size: 18px;
+                height: 48px;
+                width: 48px;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
         }
 
         .totalComments {
@@ -67,6 +88,9 @@
             font-size: 14px;
             line-height: 18px;
             margin-top: 14px;
+            display: flex;
+            align-items: center;
+            column-gap: 8px;
         }
 
         &.createPostClass {
@@ -76,6 +100,7 @@
             }
             .commentContectSection{
                 margin-top: 16px;
+                align-items: center;
             }
             .postBtn{
                 margin-left: auto;
