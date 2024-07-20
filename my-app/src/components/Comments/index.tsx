@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { formatClassNames, unlockBody } from "../../utils/helperUtility";
+import { unlockBody } from "../../utils/helperUtility";
 import LoginModal from "../LoginModal";
 import "./Comments.scss";
 import ChatBubble from "./assets/chatBubble.svg";
@@ -20,7 +20,7 @@ const Comments = () => {
     const handleLoginModal = (val: boolean) => setOpenLoginModal(val);
 
     const renderCreateNewPostComment = () => {
-        return <div className={formatClassNames("createPostClass", "commentParent")} onClick={() => handleLoginModal(true)}>
+        return <div className="createPostClass commentParent" onClick={() => handleLoginModal(true)}>
             <div className="profileSection">
                 <div className="leftSection">
                     <div className="ownerName">Create post</div>
